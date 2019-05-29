@@ -1,0 +1,54 @@
+div {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-image: url(../assets/black-1072366_640.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+p {
+  display: block;
+  margin: 0 auto;
+}
+app-add-task.container1 {
+  display: flex;
+  flex-basis: 88%;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  align-content: flex-start;
+}
+app-todo-task.container2 {
+  display: flex;
+  flex-basis: 88%;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+app-done-task.container3 {
+  display: flex;
+  flex-basis: 88%;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+@media (min-height: 640px) {
+  div {
+    background-image: url(../assets/black-1072366_19202.jpg);
+  }
+}
+@media (orientation: landscape) and (min-width: 731px) {
+  app-root {
+    justify-content: center;
+  }
+
+  app-todo-task.container2 {
+    flex-basis: 44%;
+    border-right: 1px solid white;
+    padding-right: 5px;
+  }
+  app-done-task.container3 {
+    flex-basis: 44%;
+    border-left: 1px solid white;
+    padding-left: 20px;
+  }
+}

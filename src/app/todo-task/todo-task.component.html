@@ -1,0 +1,173 @@
+<ng-container *ngIf="tasksList.length > 0; else noTask">
+  <h2 [ngStyle]="{ color: getColor() }">To do: {{ tasksList.length }}</h2>
+  <ul>
+    <li
+      appDate
+      [date]="task.created"
+      *ngFor="let task of tasksList | sortName; let odd = odd"
+      [ngClass]="{ 'odd-li': odd, 'last-li': tasksList.length === 1 }"
+    >
+      <p>{{ task.name | transformTask }}</p>
+      <div class="buttons">
+        <button (click)="remove(task)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="50"
+            height="50"
+            viewBox="0 0 192 192"
+            style=" fill:#000000;"
+          >
+            <g transform="translate(4.704,4.704) scale(0.951,0.951)">
+              <g
+                fill="none"
+                fill-rule="nonzero"
+                stroke="none"
+                stroke-width="none"
+                stroke-linecap="butt"
+                stroke-linejoin="none"
+                stroke-miterlimit="10"
+                stroke-dasharray=""
+                stroke-dashoffset="0"
+                font-family="none"
+                font-weight="none"
+                font-size="none"
+                text-anchor="none"
+                style="mix-blend-mode: normal"
+              >
+                <g
+                  id="original-icon 1"
+                  fill="#000000"
+                  stroke="#ffffff"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M45.65625,34.34375l50.34375,50.34375l50.34375,-50.34375c1.44897,-1.49131 3.42161,-2.35995 5.5,-2.42188c3.29827,-0.09727 6.31794,1.8403 7.60397,4.87907c1.28603,3.03877 0.57461,6.55537 -1.79148,8.8553l-50.34375,50.34375l50.34375,50.34375c2.08993,2.00653 2.93181,4.98614 2.20095,7.78967c-0.73085,2.80354 -2.92024,4.99292 -5.72377,5.72377c-2.80354,0.73085 -5.78314,-0.11102 -7.78967,-2.20095l-50.34375,-50.34375l-50.34375,50.34375c-2.00654,2.0899 -4.98613,2.93176 -7.78965,2.20091c-2.80352,-0.73086 -4.99289,-2.92023 -5.72375,-5.72375c-0.73086,-2.80352 0.111,-5.78311 2.2009,-7.78965l50.34375,-50.34375l-50.34375,-50.34375c-2.33289,-2.2705 -3.0575,-5.7281 -1.83252,-8.74421c1.22498,-3.01612 4.15526,-4.98931 7.41065,-4.99016c2.16001,0.00013 4.22821,0.87361 5.73437,2.42188z"
+                  ></path>
+                </g>
+                <path
+                  d="M0,192v-192h192v192z"
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+                <g
+                  id="original-icon"
+                  fill="#ffffff"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                >
+                  <path
+                    d="M39.92188,31.92188c-3.25538,0.00085 -6.18567,1.97404 -7.41065,4.99016c-1.22498,3.01612 -0.50037,6.47372 1.83252,8.74421l50.34375,50.34375l-50.34375,50.34375c-2.0899,2.00654 -2.93176,4.98613 -2.2009,7.78965c0.73086,2.80352 2.92023,4.99289 5.72375,5.72375c2.80352,0.73086 5.78311,-0.111 7.78965,-2.20091l50.34375,-50.34375l50.34375,50.34375c2.00653,2.08993 4.98614,2.93181 7.78967,2.20095c2.80354,-0.73085 4.99292,-2.92024 5.72377,-5.72377c0.73085,-2.80354 -0.11102,-5.78314 -2.20095,-7.78967l-50.34375,-50.34375l50.34375,-50.34375c2.36608,-2.29993 3.07751,-5.81653 1.79148,-8.8553c-1.28603,-3.03877 -4.3057,-4.97634 -7.60397,-4.87907c-2.07839,0.06193 -4.05103,0.93056 -5.5,2.42188l-50.34375,50.34375l-50.34375,-50.34375c-1.50617,-1.54826 -3.57436,-2.42175 -5.73437,-2.42188z"
+                  ></path>
+                </g>
+                <path
+                  d=""
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+                <path
+                  d=""
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <button (click)="done(task)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="48"
+            height="48"
+            viewBox="0 0 192 192"
+            style=" fill:#000000;"
+          >
+            <g transform="translate(4.704,4.704) scale(0.951,0.951)">
+              <g
+                fill="none"
+                fill-rule="nonzero"
+                stroke="none"
+                stroke-width="none"
+                stroke-linecap="butt"
+                stroke-linejoin="none"
+                stroke-miterlimit="10"
+                stroke-dasharray=""
+                stroke-dashoffset="0"
+                font-family="none"
+                font-weight="none"
+                font-size="none"
+                text-anchor="none"
+                style="mix-blend-mode: normal"
+              >
+                <g
+                  id="original-icon 1"
+                  fill="#000000"
+                  stroke="#6dff09"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M167.44772,52.80095c1.28603,3.03877 0.57461,6.55537 -1.79148,8.8553l-88,88c-3.12424,3.12295 -8.18826,3.12295 -11.3125,0l-32,-32c-2.0899,-2.00654 -2.93176,-4.98613 -2.2009,-7.78965c0.73086,-2.80352 2.92023,-4.99289 5.72375,-5.72375c2.80352,-0.73086 5.78311,0.111 7.78965,2.20091l26.34375,26.34375l82.34375,-82.34375c1.44897,-1.49131 3.42161,-2.35995 5.5,-2.42188c3.29827,-0.09727 6.31794,1.8403 7.60397,4.87907z"
+                  ></path>
+                </g>
+                <path
+                  d="M0,192v-192h192v192z"
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+                <g
+                  id="original-icon"
+                  fill="#6dff09"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                >
+                  <path
+                    d="M159.84375,47.92188c-2.07839,0.06193 -4.05103,0.93056 -5.5,2.42188l-82.34375,82.34375l-26.34375,-26.34375c-2.00654,-2.0899 -4.98613,-2.93176 -7.78965,-2.20091c-2.80352,0.73086 -4.99289,2.92023 -5.72375,5.72375c-0.73086,2.80352 0.111,5.78311 2.2009,7.78965l32,32c3.12424,3.12295 8.18826,3.12295 11.3125,0l88,-88c2.36608,-2.29993 3.07751,-5.81653 1.79148,-8.8553c-1.28603,-3.03877 -4.3057,-4.97634 -7.60397,-4.87907z"
+                  ></path>
+                </g>
+                <path
+                  d=""
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+                <path
+                  d=""
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+                <path
+                  d=""
+                  fill="none"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linejoin="miter"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noTask>
+  <p class="noTodos">Nothing to do! Coffee time!</p>
+</ng-template>
