@@ -19,7 +19,6 @@ div.inputAndButton > input {
 svg {
   width: 45px;
   height: 100%;
-  margin-left: 5px;
 }
 @media (orientation: portrait) and (min-width: 768px) {
   h1 {

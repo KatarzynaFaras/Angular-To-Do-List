@@ -1,7 +1,9 @@
 <h2>Done: {{ doneTasksList.length }}</h2>
 <ul>
-  <li appDate [date]="task.end" *ngFor="let task of doneTasksList">
-    <p>{{ task.name | transformTask: " - super!" }}</p>
+  <li *ngFor="let task of doneTasksList">
+    <p appDate [date]="task.end">
+      {{ task.name | transformTask: " - super!" }}
+    </p>
     <button (click)="delete(task)">
       <svg
         xmlns="http://www.w3.org/2000/svg"

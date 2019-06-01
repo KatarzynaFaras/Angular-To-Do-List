@@ -6,17 +6,11 @@
   font-family: "Caveat Brush", cursive;
   color: white;
 }
-html {
-  margin: 0 auto;
-  max-width: 1366px;
-}
-body {
-  max-width: 100%;
-}
+
 app-root {
   display: flex;
   height: 100%;
-  flex-basis: 100vw;
+  flex-basis: 100%;
 
   flex-wrap: wrap;
   justify-content: space-around;

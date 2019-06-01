@@ -8,17 +8,17 @@ import { TasksService } from "../services/tasks.service";
   styleUrls: ["./done-task.component.css"]
 })
 export class DoneTaskComponent implements OnInit {
-  doneTasksList = [];
-
+  doneTasksList: Array<Task> = [];
+  //do konstruktora wstrzykujemy obiekt TaskService, pobieramy listę tasków które są w obserwatorze, i filtrujemy ją na obecność tasków z isDone: true, i te przypisujemy do listy doneTasksList
   constructor(private tasksService: TasksService) {
-    this.tasksService.getTasksDoneObs().subscribe((tasks: Array<Task>) => {
-      this.doneTasksList = tasks;
+    this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
+      this.doneTasksList = tasks.filter(t => t.isDone === true);
     });
   }
 
   ngOnInit() {}
 
   delete(task: Task) {
-    this.tasksService.delete(task);
+    this.doneTasksList = this.doneTasksList.filter(t => t !== task);
   }
 }

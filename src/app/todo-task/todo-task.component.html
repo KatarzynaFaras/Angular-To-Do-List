@@ -2,12 +2,10 @@
   <h2 [ngStyle]="{ color: getColor() }">To do: {{ tasksList.length }}</h2>
   <ul>
     <li
-      appDate
-      [date]="task.created"
       *ngFor="let task of tasksList | sortName; let odd = odd"
       [ngClass]="{ 'odd-li': odd, 'last-li': tasksList.length === 1 }"
     >
-      <p>{{ task.name | transformTask }}</p>
+      <p appDate [date]="task.created">{{ task.name | transformTask }}</p>
       <div class="buttons">
         <button (click)="remove(task)">
           <svg
