@@ -27,8 +27,6 @@ export class TodoTaskComponent implements OnInit {
   }
 
   getColor(): string {
-    return this.tasksList.length >= 5
-      ? "red"
-      : "font-family: 'Caveat Brush', cursive;";
+    return this.tasksList.length >= 5 ? "red" : "white";
   }
 }

@@ -1,6 +1,6 @@
+import { TasksService } from "./../services/tasks.service";
 import { Task } from "./../model/Task";
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { TasksService } from "../services/tasks.service";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-done-task",
@@ -8,8 +8,7 @@ import { TasksService } from "../services/tasks.service";
   styleUrls: ["./done-task.component.css"]
 })
 export class DoneTaskComponent implements OnInit {
-  doneTasksList: Array<Task> = [];
-  //do konstruktora wstrzykujemy obiekt TaskService, pobieramy listę tasków które są w obserwatorze, i filtrujemy ją na obecność tasków z isDone: true, i te przypisujemy do listy doneTasksList
+  doneTasksList = [];
   constructor(private tasksService: TasksService) {
     this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
       this.doneTasksList = tasks.filter(t => t.isDone === true);
@@ -19,6 +18,6 @@ export class DoneTaskComponent implements OnInit {
   ngOnInit() {}
 
   delete(task: Task) {
-    this.doneTasksList = this.doneTasksList.filter(t => t !== task);
+    this.tasksService.delete(task);
   }
 }

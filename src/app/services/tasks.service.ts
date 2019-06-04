@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class TasksService {
-  //obserwator, przekazuje do odbiorców najbardziej aktualny element
   tasksListObs = new BehaviorSubject<Array<Task>>([]);
+  tasksDoneObs = new BehaviorSubject<Array<Task>>([]);
   constructor() {
     const tasksList = [
       {
@@ -35,6 +35,12 @@ export class TasksService {
     const list = this.tasksListObs.getValue().filter(e => e !== task);
     this.tasksListObs.next(list);
   }
+  delete(task: Task) {
+    task.isDone = false;
+    this.remove(task);
+    const list = this.tasksListObs.getValue();
+    this.tasksListObs.next(list);
+  }
 
   done(task: Task) {
     task.end = new Date().toLocaleString();
@@ -45,5 +51,12 @@ export class TasksService {
 
   getTasksListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
+  }
+  getDoneListObs(): Observable<Array<Task>> {
+    return this.tasksDoneObs.asObservable();
+  }
+
+  setDoneListObs(array: Array<Task>) {
+    this.tasksDoneObs.next(array);
   }
 }
