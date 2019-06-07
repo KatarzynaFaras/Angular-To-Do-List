@@ -1,6 +1,7 @@
 div {
   height: 100%;
   width: 100%;
+  max-width: 1280px;
   position: fixed;
   background-image: url(../assets/black-1072366_640.jpg);
   background-size: cover;
@@ -31,9 +32,24 @@ app-done-task.container3 {
   flex-wrap: wrap;
   align-content: flex-start;
 }
-@media (min-height: 640px) {
+@media (orientation: portrait) and (min-height: 640px) {
   div {
-    background-image: url(../assets/black-1072366_19202.jpg);
+    background-image: url(../assets/black-1072366_1280.jpg);
+  }
+}
+@media (orientation: landscape) and (min-width: 640px) {
+  div {
+    background-image: url(../assets/black-1072366_1280poziomo.jpg);
+  }
+}
+@media (orientation: portrait) and (min-height: 1280px) {
+  div {
+    background-image: url(../assets/black-1072366_1920.jpg);
+  }
+}
+@media (orientation: landscape) and (min-width: 1280px) {
+  div {
+    background-image: url(../assets/black-1072366_1920poziomo.jpg);
   }
 }
 @media (orientation: landscape) and (min-width: 731px) {
@@ -48,6 +64,7 @@ app-done-task.container3 {
   }
   app-done-task.container3 {
     flex-basis: 44%;
+    max-width: 44%;
     border-left: 1px solid white;
     padding-left: 20px;
   }
